@@ -2,6 +2,16 @@
 
 namespace
 {
+    bool IsDivisableBy400(int Year)
+    {
+	return (Year%400) == 0;
+    }
+
+    bool IsDivisableBy100(int Year)
+    {
+	return (Year%100) == 0;
+    }
+
     bool IsDivisableBy4(int Year)
     {
         return (Year%4) == 0;
@@ -10,5 +20,7 @@ namespace
 
 bool IsLeapYear(int Year)
 {
-    return IsDivisableBy4(Year);
+	const bool LeapYear = IsDivisableBy400(Year) ||
+		(IsDivisableBy4(Year) && !IsDivisableBy100(Year));
+	return LeapYear;
 }
